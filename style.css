@@ -1,0 +1,466 @@
+/* =====================================================
+   EXPLORE KARNATAKA - style.css
+   Colours are taken from Karnataka itself:
+   flag yellow and red, Western Ghats green, Hampi granite.
+   ===================================================== */
+
+/* ---------- 1. Variables (change colours here once) ---------- */
+:root {
+  --green: #143d2f;
+  --yellow: #f5b301;
+  --red: #b3261e;
+  --stone: #3a3833;
+  --mist: #eaf1ec;
+  --white: #ffffff;
+
+  --font-heading: "Yatra One", Georgia, serif;
+  --font-body: "Hind", system-ui, Arial, sans-serif;
+}
+
+/* ---------- 2. Reset and base ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;          /* keeps headings visible below the sticky header */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--stone);
+  background: var(--white);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--green);
+}
+
+h2 { font-size: 2.2rem; margin-bottom: 0.6rem; }
+h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+
+p { max-width: 70ch; margin-bottom: 1rem; }
+
+a { color: var(--red); }
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+code {
+  background: var(--mist);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+/* ---------- 3. Header and navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 1.5rem;
+  background: var(--green);
+  border-bottom: 4px solid var(--yellow);
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--yellow);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header ul {
+  display: flex;
+  gap: 1.1rem;
+  list-style: none;
+  overflow-x: auto;                  /* menu scrolls sideways on small screens */
+}
+
+.site-header nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.site-header nav a:hover {
+  border-bottom-color: var(--yellow);
+}
+
+/* ---------- 4. Hero ---------- */
+/* The two coloured bands copy the Karnataka flag: yellow on top, red below. */
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 85vh;
+  padding: 2rem 1rem;
+  overflow: hidden;
+}
+
+.hero-band {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+}
+.hero-yellow { top: 0;   background: var(--yellow); }
+.hero-red    { top: 50%; background: var(--red); }
+
+.hero-text {
+  position: relative;                /* sits on top of the bands */
+  max-width: 640px;
+  padding: 2.5rem;
+  background: var(--green);
+  color: var(--white);
+  border-radius: 6px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hero-kannada {
+  font-size: 4.5rem;
+  line-height: 1.1;
+  color: var(--yellow);
+  margin-bottom: 0.5rem;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: var(--yellow);
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.button:hover { background: var(--white); }
+
+/* ---------- 5. Sections ---------- */
+.section {
+  padding: 4rem max(1.5rem, calc((100% - 1100px) / 2));   /* centres content up to 1100px */
+}
+
+.section-tint  { background: var(--mist); }
+.section-green { background: var(--green); color: var(--white); }
+.section-green h2,
+.section-green h3 { color: var(--yellow); }
+
+.lead {
+  font-size: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+/* ---------- 6. Introduction facts ---------- */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.facts div {
+  padding: 1rem;
+  border-left: 5px solid var(--yellow);
+  background: var(--mist);
+}
+
+.facts dt { font-size: 0.9rem; color: var(--red); font-weight: 600; }
+.facts dd { font-size: 1.15rem; color: var(--green); font-weight: 600; }
+
+/* ---------- 7. Cards (tourist places) ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #d5ded8;
+}
+
+.photo {
+  height: 190px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-body { padding: 1.2rem; }
+.card-body p { margin-bottom: 0; }
+
+/*
+  PHOTO TRICK: each background lists a photo first and a gradient second.
+  If the photo file is missing, the browser just shows the gradient.
+  To use a real photo, save it in an "images" folder with the same file name.
+*/
+.p-mysuru    { background-image: url("images/mysuru-palace.jpg"), linear-gradient(135deg, #f5b301, #b3261e); }
+.p-bengaluru { background-image: url("images/bengaluru.jpg"),     linear-gradient(135deg, #2c7a4b, #143d2f); }
+.p-coorg     { background-image: url("images/coorg.jpg"),         linear-gradient(135deg, #7fb069, #1d4d3a); }
+.p-gokarna   { background-image: url("images/gokarna.jpg"),       linear-gradient(135deg, #48b1c9, #f5d76e); }
+.p-udupi     { background-image: url("images/udupi.jpg"),         linear-gradient(135deg, #e0793a, #7a2b1b); }
+
+/* ---------- 8. Timeline (historical places) ---------- */
+.timeline {
+  list-style: none;
+  border-left: 4px solid var(--yellow);
+  margin-left: 0.6rem;
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 2rem 2rem;
+}
+
+/* the round dot on the line */
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -13px;
+  top: 6px;
+  width: 22px;
+  height: 22px;
+  background: var(--red);
+  border: 4px solid var(--white);
+  border-radius: 50%;
+}
+
+.timeline h3 span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* ---------- 9. Waterfalls and hill stations ---------- */
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.plain-list {
+  list-style: none;
+}
+
+.plain-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(20, 61, 47, 0.2);
+}
+
+.section-green .plain-list li {
+  border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- 10. Food flip cards (pure CSS, no JavaScript) ---------- */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.2rem;
+}
+
+.flip {
+  height: 190px;
+  perspective: 900px;                /* gives the flip a 3D look */
+  cursor: pointer;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* flip on mouse hover OR when the card is focused (tap on phone / Tab key) */
+.flip:hover .flip-inner,
+.flip:focus .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 6px;
+  backface-visibility: hidden;       /* hides the side that faces away */
+}
+
+.flip-front h3 {
+  color: var(--white);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+.flip-back {
+  background: var(--green);
+  color: var(--white);
+  transform: rotateY(180deg);
+}
+.flip-back p { margin: 0; font-size: 0.98rem; }
+
+.f-dosa      { background-image: url("images/masala-dosa.jpg"),   linear-gradient(135deg, #e0a030, #8a5a12); background-size: cover; }
+.f-bisi      { background-image: url("images/bisi-bele-bath.jpg"), linear-gradient(135deg, #d9622b, #7a2b1b); background-size: cover; }
+.f-mysorepak { background-image: url("images/mysore-pak.jpg"),    linear-gradient(135deg, #f5b301, #c07a00); background-size: cover; }
+.f-mudde     { background-image: url("images/ragi-mudde.jpg"),    linear-gradient(135deg, #6b4a2f, #2e1f14); background-size: cover; }
+.f-jolada    { background-image: url("images/jolada-rotti.jpg"),  linear-gradient(135deg, #b98a4a, #5c3d17); background-size: cover; }
+.f-neer      { background-image: url("images/neer-dosa.jpg"),     linear-gradient(135deg, #48b1c9, #1f5f73); background-size: cover; }
+.f-peda      { background-image: url("images/dharwad-peda.jpg"),  linear-gradient(135deg, #a5622a, #4d2a0f); background-size: cover; }
+.f-coffee    { background-image: url("images/filter-coffee.jpg"), linear-gradient(135deg, #5a3825, #21120a); background-size: cover; }
+
+/* ---------- 11. Gallery ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-auto-rows: 190px;
+  gap: 0.8rem;
+}
+
+.g {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s;
+}
+
+.g:hover { transform: scale(1.03); }
+
+.g.tall { grid-row: span 2; }
+.g.wide { grid-column: span 2; }
+
+.g figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.5rem 0.8rem;
+  background: rgba(20, 61, 47, 0.85);
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.g-hampi     { background-image: url("images/hampi.jpg"),      linear-gradient(160deg, #a5622a, #4d2a0f); }
+.g-mysuru    { background-image: url("images/mysuru-palace.jpg"), linear-gradient(135deg, #f5b301, #b3261e); }
+.g-jog       { background-image: url("images/jog-falls.jpg"),  linear-gradient(135deg, #48b1c9, #143d2f); }
+.g-coorg     { background-image: url("images/coorg.jpg"),      linear-gradient(135deg, #7fb069, #1d4d3a); }
+.g-belur     { background-image: url("images/belur.jpg"),      linear-gradient(135deg, #8d8677, #3a3833); }
+.g-gokarna   { background-image: url("images/gokarna.jpg"),    linear-gradient(160deg, #48b1c9, #f5d76e); }
+.g-golgumbaz { background-image: url("images/gol-gumbaz.jpg"), linear-gradient(135deg, #d9c9a3, #7a6a44); }
+.g-nandi     { background-image: url("images/nandi-hills.jpg"), linear-gradient(135deg, #9bb8d3, #2c4a63); }
+
+/* ---------- 12. Travel table and tips ---------- */
+.table-wrap {
+  overflow-x: auto;                  /* table scrolls sideways on phones */
+  margin-bottom: 2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+
+caption {
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--green);
+  padding-bottom: 0.5rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #d5ded8;
+}
+
+thead th {
+  background: var(--green);
+  color: var(--white);
+}
+
+tbody th { color: var(--green); }
+tbody tr:hover { background: var(--mist); }
+
+h3 + .two-col,
+.table-wrap + h3 { margin-top: 1rem; }
+
+#travel h3 { margin-top: 2rem; }
+
+/* FAQ using the built-in <details> tag: opens and closes with no JavaScript */
+details {
+  border: 1px solid #d5ded8;
+  border-radius: 6px;
+  margin-bottom: 0.6rem;
+}
+
+summary {
+  padding: 0.8rem 1rem;
+  font-weight: 600;
+  color: var(--green);
+  cursor: pointer;
+}
+
+details[open] summary { background: var(--mist); }
+details p { padding: 0.8rem 1rem 0; }
+
+/* ---------- 13. Footer ---------- */
+.site-footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: var(--green);
+  color: var(--white);
+  border-top: 4px solid var(--yellow);
+}
+.site-footer p { margin: 0 auto 0.3rem; }
+.site-footer a { color: var(--yellow); }
+
+/* ---------- 14. Small screens ---------- */
+@media (max-width: 700px) {
+  .site-header { flex-direction: column; align-items: flex-start; }
+  .site-header ul { width: 100%; padding-bottom: 0.3rem; }
+  .hero-kannada { font-size: 3.2rem; }
+  .hero h1 { font-size: 1.4rem; }
+  .hero-text { padding: 1.5rem; }
+  .g.wide { grid-column: span 1; }
+  h2 { font-size: 1.8rem; }
+}
+
+/* Respect people who turn off animations in their system settings */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .flip-inner, .g, .button { transition: none; }
+}
